@@ -1,0 +1,135 @@
+@charset "utf-8";
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+ 
+header {
+  width: 100%;
+  height: 50vh;
+  background-color: #c2c2aa;
+}
+header h1 {
+  font-size: 8.0rem;
+  text-align: center;
+  padding-top: 100px;
+  color: #6296b7;
+}
+
+nav {
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: #926b6a;
+  z-index: 100;
+}
+nav ul {
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  color: #F7CAC9;
+}
+
+
+
+
+
+ul {
+  list-style: none;
+}
+
+.content {
+  max-width: 960px;
+  padding: 0 20px;
+  margin: 100px auto;
+}
+.title {
+  font-size: 2rem;
+  font-weight: normal;
+  margin-bottom: 50px;
+  text-align: center;
+}
+.ac-menu li {
+  border: solid 1px #333333;
+  margin-bottom: 10px;
+}
+
+.ac-menu .label {
+  cursor:pointer;
+  font-size: 1.125rem;
+  font-weight: bold;
+  padding: 40px 30px;
+  position: relative;
+  transition: .5s;
+}
+.ac-menu .label:hover {
+  background-color: #5DA399;
+}
+/*
+ラベル右側のアイコン「＋」を設定
+beforeが横棒
+afterが縦棒
+*/
+.ac-menu .label::before,
+.ac-menu .label::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: #000;
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+}
+.ac-menu .label::before{
+  transition: .5s;
+}
+.ac-menu .label::after {
+  transform: translateY(-50%) rotate(90deg);
+  transition: .5s;
+}
+/*
+アコーディオンメニューが開いている場合
+*/
+.ac-menu .label.open {
+  /* ラベルの背景色を変更 */
+  background-color: #5DA399;
+}
+.ac-menu .label.open::before {
+  /* ラベルアイコンの横棒を非表示 */
+  transform: rotate(-45deg);
+}
+.ac-menu .label.open::after {
+  /* ラベルアイコンの縦棒を横向きに回転 */
+  transform: rotate(45deg);
+}
+/*
+アコーディオンメニューのコンテンツ部分は、「display: none;」で非表示にしておく。
+ラベルクリック時にjQueryの「  $(this).next().slideToggle();」で表示に切り替わる
+*/
+.ac-menu .detail {
+  border-top: solid 2px #8f001a;
+  padding: 35px 30px;
+  padding-bottom: 0;
+  display: none;
+}
+.ac-menu .detail dl {
+  display: flex;
+  flex-wrap: wrap;
+}
+.ac-menu .detail dt {
+  width: 20%;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+.ac-menu .detail dd {
+  width: 80%;
+  margin-bottom: 40px;
+}
